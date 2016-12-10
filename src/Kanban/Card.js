@@ -1,54 +1,54 @@
-import React, { Component, PropTypes } from 'react';
-import { Panel } from 'react-bootstrap';
-import { DragSource, DropTarget } from 'react-dnd';
-import ItemTypes from './ItemTypes';
-import { trelloClient } from '../trello'
+import React, { Component, PropTypes } from "react";
+import { Panel } from "react-bootstrap";
+import { DragSource, DropTarget } from "react-dnd";
+import ItemTypes from "./ItemTypes";
+import { trelloClient } from "../trello";
 
 /**
  * Specifies the drag source contract.
  * Only `beginDrag` function is required.
  */
- const cardSource = {
-   beginDrag(props) {
-     return {
-       id: props.id,
-       originalIndex: props.findCard(props.id).index
-     };
-   },
+const cardSource = {
+  beginDrag(props) {
+    return {
+      id: props.id,
+      originalIndex: props.findCard( props.id ).index
+    };
+  },
 
-   endDrag(props, monitor) {
-     const { id: droppedId, originalIndex } = monitor.getItem();
-     const didDrop = monitor.didDrop();
+  endDrag(props, monitor) {
+    const {id: droppedId, originalIndex} = monitor.getItem();
+    const didDrop = monitor.didDrop();
 
-     if (!didDrop) {
-       props.moveCard(droppedId, originalIndex);
-     }
-   }
- };
+    if (!didDrop) {
+      props.moveCard( droppedId, originalIndex );
+    }
+  }
+};
 
 /**
  * Specifies the drop target contract.
  * All methods are optional.
  */
- const cardTarget = {
-   canDrop() {
-     return false;
-   },
+const cardTarget = {
+  canDrop() {
+    return false;
+  },
 
-   hover(props, monitor) {
-     const { id: draggedId } = monitor.getItem();
-     const { id: overId } = props;
+  hover(props, monitor) {
+    const {id: draggedId} = monitor.getItem();
+    const {id: overId} = props;
 
-     if (draggedId !== overId) {
-       const { index: overIndex } = props.findCard(overId);
-       props.moveCard(draggedId, overIndex);
-     }
-   }
- };
+    if (draggedId !== overId) {
+      const {index: overIndex} = props.findCard( overId );
+      props.moveCard( draggedId, overIndex );
+    }
+  }
+};
 
- /**
-  * Specifies which props to inject into your component.
-  */
+/**
+ * Specifies which props to inject into your component.
+ */
 function collectDrag(connect, monitor) {
   return {
     // Call this function inside render()
@@ -80,30 +80,30 @@ class Card extends Component {
   };
 
   constructor(props) {
-    super(props);
-    this.state = { name: "" };
+    super( props );
+    this.state = {name: ""};
 
-    var cardPromise = trelloClient.getCard(this.props.id);
-    cardPromise.then((card) => {
-      this.setState({ name: card.name });
-    });
+    var cardPromise = trelloClient.getCard( this.props.id );
+    cardPromise.then( (card) => {
+      this.setState( {name: card.name} );
+    } );
   }
 
   render() {
-    const { name } = this.state;
-    const { isDragging, connectDragSource, connectDropTarget } = this.props;
+    const {name} = this.state;
+    const {isDragging, connectDragSource, connectDropTarget} = this.props;
     const opacity = isDragging ? 0 : 1;
 
-    return connectDragSource(connectDropTarget(
+    return connectDragSource( connectDropTarget(
       <div>
-        <Panel style={{ opacity }}>
+        <Panel style={{opacity}}>
           {name}
         </Panel>
       </div>
-    ));
+    ) );
   }
 }
 
-export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(
-  DragSource(ItemTypes.CARD, cardSource, collectDrag)(Card)
+export default DropTarget( ItemTypes.CARD, cardTarget, collectDrop )(
+  DragSource( ItemTypes.CARD, cardSource, collectDrag )( Card )
 );
