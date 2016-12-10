@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Board />
+        <Board id={'F4sP3vRt'} />
       </div>
     );
   }
