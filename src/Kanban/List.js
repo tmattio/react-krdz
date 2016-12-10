@@ -28,7 +28,6 @@ function collectDrop(connect, monitor) {
 
 class List extends Component {
   static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired,
     id: PropTypes.any.isRequired,
   };
 
@@ -61,12 +60,12 @@ class List extends Component {
 
     this.state = { cards: [], title: "" };
 
-    var cardsPromise = trelloClient.getCardsForList(this.props.id)
+    var cardsPromise = trelloClient.getCardsForList(this.props.id);
     cardsPromise.then((cards) => {
       this.setState({ cards: cards });
     })
 
-    var listPromise = trelloClient.getList(this.props.id)
+    var listPromise = trelloClient.getList(this.props.id);
     listPromise.then((list) => {
       this.setState({ title: list.name });
     })

@@ -74,9 +74,6 @@ function collectDrop(connect, monitor) {
 
 class Card extends Component {
   static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
     id: PropTypes.any.isRequired,
     moveCard: PropTypes.func.isRequired,
     findCard: PropTypes.func.isRequired
@@ -86,10 +83,10 @@ class Card extends Component {
     super(props);
     this.state = { name: "" };
 
-    var cardPromise = trelloClient.getCard(this.props.id)
+    var cardPromise = trelloClient.getCard(this.props.id);
     cardPromise.then((card) => {
       this.setState({ name: card.name });
-    })
+    });
   }
 
   render() {

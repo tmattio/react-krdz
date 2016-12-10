@@ -12,12 +12,15 @@ class Board extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { lists: [] };
+    
+    this.state = {
+      lists: []
+    };
 
-    var listsPromise = trelloClient.getListsOnBoard(this.props.id)
+    var listsPromise = trelloClient.getListsOnBoard(this.props.id);
     listsPromise.then((lists) => {
       this.setState({ lists: lists });
-    })
+    });
   }
 
   render() {
