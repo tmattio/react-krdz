@@ -7,5 +7,5 @@ import "designmodo-flat-ui/dist/css/flat-ui.css";
 
 ReactDOM.render(
   <App />,
-  document.getElementById( 'root' )
+  document.getElementById('root')
 );

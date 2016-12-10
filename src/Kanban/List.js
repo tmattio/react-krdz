@@ -32,43 +32,43 @@ class List extends Component {
   };
 
   moveCard(id, atIndex) {
-    const {card, index} = this.findCard( id );
-    this.setState( update( this.state, {
+    const {card, index} = this.findCard(id);
+    this.setState(update(this.state, {
       cards: {
         $splice: [
           [index, 1],
           [atIndex, 0, card]
         ]
       }
-    } ) );
+    }));
   }
 
   findCard(id) {
     const {cards} = this.state;
-    const card = cards.filter( c => c.id === id )[0];
+    const card = cards.filter(c => c.id === id)[0];
 
     return {
       card,
-      index: cards.indexOf( card )
+      index: cards.indexOf(card)
     };
   }
 
   constructor(props) {
-    super( props );
-    this.moveCard = this.moveCard.bind( this );
-    this.findCard = this.findCard.bind( this );
+    super(props);
+    this.moveCard = this.moveCard.bind(this);
+    this.findCard = this.findCard.bind(this);
 
     this.state = {cards: [], title: ""};
 
-    var cardsPromise = trelloClient.getCardsForList( this.props.id );
-    cardsPromise.then( (cards) => {
-      this.setState( {cards: cards} );
-    } )
+    var cardsPromise = trelloClient.getCardsForList(this.props.id);
+    cardsPromise.then((cards) => {
+      this.setState({cards: cards});
+    })
 
-    var listPromise = trelloClient.getList( this.props.id );
-    listPromise.then( (list) => {
-      this.setState( {title: list.name} );
-    } )
+    var listPromise = trelloClient.getList(this.props.id);
+    listPromise.then((list) => {
+      this.setState({title: list.name});
+    })
   }
 
   render() {
@@ -79,14 +79,14 @@ class List extends Component {
       <div>
         <Col xs={6} md={4}>
           <Panel header={ title }>
-            {cards.map( (card, i) => {
+            {cards.map((card, i) => {
               return (
                 <Card key={card.id}
                       id={card.id}
                       moveCard={this.moveCard}
                       findCard={this.findCard}/>
               );
-            } )}
+            })}
           </Panel>
         </Col>
       </div>
@@ -94,4 +94,4 @@ class List extends Component {
   }
 }
 
-export default DropTarget( ItemTypes.CARD, cardTarget, collectDrop )( List );
+export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(List);

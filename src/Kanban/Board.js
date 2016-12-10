@@ -11,16 +11,16 @@ class Board extends Component {
   };
 
   constructor(props) {
-    super( props );
+    super(props);
 
     this.state = {
       lists: []
     };
 
-    var listsPromise = trelloClient.getListsOnBoard( this.props.id );
-    listsPromise.then( (lists) => {
-      this.setState( {lists: lists} );
-    } );
+    var listsPromise = trelloClient.getListsOnBoard(this.props.id);
+    listsPromise.then((lists) => {
+      this.setState({lists: lists});
+    });
   }
 
   render() {
@@ -30,11 +30,11 @@ class Board extends Component {
       <div>
         <Grid fluid={true}>
           <Row className="show-grid">
-            {lists.map( (list, i) => {
+            {lists.map((list, i) => {
               return (
                 <List key={list.id} id={list.id}/>
               );
-            } )}
+            })}
           </Row>
         </Grid>
       </div>
@@ -42,4 +42,4 @@ class Board extends Component {
   }
 }
 
-export default DragDropContext( HTML5Backend )( Board );
+export default DragDropContext(HTML5Backend)(Board);
