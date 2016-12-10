@@ -46,6 +46,32 @@ import { trelloClient } from '../trello'
    }
  };
 
+ /**
+  * Specifies which props to inject into your component.
+  */
+function collectDrag(connect, monitor) {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDragSource: connect.dragSource(),
+    // You can ask the monitor about the current drag state:
+    isDragging: monitor.isDragging()
+  };
+}
+
+/**
+ * Specifies which props to inject into your component.
+ */
+function collectDrop(connect, monitor) {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDropTarget: connect.dropTarget(),
+    // You can ask the monitor about the current drag state:
+    hovered: monitor.isOver()
+  };
+}
+
 class Card extends Component {
   static propTypes = {
     connectDragSource: PropTypes.func.isRequired,
@@ -81,13 +107,6 @@ class Card extends Component {
   }
 }
 
-export default DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
-}))(
-  DragSource(ItemTypes.CARD, cardSource, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  }))(
-    Card
-  )
+export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(
+  DragSource(ItemTypes.CARD, cardSource, collectDrag)(Card)
 );

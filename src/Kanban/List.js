@@ -15,6 +15,17 @@ const cardTarget = {
   }
 };
 
+/**
+ * Specifies which props to inject into your component.
+ */
+function collectDrop(connect, monitor) {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDropTarget: connect.dropTarget(),
+  };
+}
+
 class List extends Component {
   static propTypes = {
     connectDropTarget: PropTypes.func.isRequired,
@@ -84,6 +95,4 @@ class List extends Component {
   }
 }
 
-export default DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
-}))(List);
+export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(List);
