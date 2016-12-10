@@ -22,15 +22,17 @@ class Board extends Component {
     const { lists } = this.state;
 
     return (
-      <Grid fluid={true}>
-        <Row className="show-grid">
-          {lists.map((list, i) => {
-            return (
-              <List key={list.id} id={list.id} />
-            );
-          })}
-        </Row>
-      </Grid>
+      <div>
+        <Grid fluid={true}>
+          <Row className="show-grid">
+            {lists.map((list, i) => {
+              return (
+                <List key={list.id} id={list.id} />
+              );
+            })}
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
