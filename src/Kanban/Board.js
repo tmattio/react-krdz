@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Row, Grid } from 'react-bootstrap';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import List from './List'
 import { trelloClient } from '../trello'
 
@@ -37,4 +39,4 @@ class Board extends Component {
   }
 }
 
-export default Board;
+export default DragDropContext(HTML5Backend)(Board);
