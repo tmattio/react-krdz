@@ -3,6 +3,7 @@ import { Panel } from "react-bootstrap";
 import { DragSource, DropTarget } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import { trelloClient } from "../trello";
+import flow from 'lodash/flow';
 
 /**
  * Specifies the drag source contract.
@@ -72,13 +73,19 @@ function collectDrop(connect, monitor) {
   };
 }
 
-class Card extends Component {
-  static propTypes = {
-    id: PropTypes.any.isRequired,
-    moveCard: PropTypes.func.isRequired,
-    findCard: PropTypes.func.isRequired
-  };
+const propTypes = {
+  id: PropTypes.any.isRequired,
+  moveCard: PropTypes.func.isRequired,
+  findCard: PropTypes.func.isRequired,
 
+  // Injected by React DnD:
+  isDragging: PropTypes.bool.isRequired,
+  hovered: PropTypes.bool.isRequired,
+  connectDragSource: PropTypes.func.isRequired,
+  connectDropTarget: PropTypes.func.isRequired
+};
+
+class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {name: ""};
@@ -104,6 +111,9 @@ class Card extends Component {
   }
 }
 
-export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(
-  DragSource(ItemTypes.CARD, cardSource, collectDrag)(Card)
-);
+Card.propTypes = propTypes;
+
+export default flow(
+  DragSource(ItemTypes.CARD, cardSource, collectDrag),
+  DropTarget(ItemTypes.CARD, cardTarget, collectDrop)
+)(Card);

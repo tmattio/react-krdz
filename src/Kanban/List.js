@@ -26,10 +26,31 @@ function collectDrop(connect, monitor) {
   };
 }
 
+const propTypes = {
+  id: PropTypes.any.isRequired,
+
+  // Injected by React DnD:
+  connectDropTarget: PropTypes.func.isRequired
+};
+
 class List extends Component {
-  static propTypes = {
-    id: PropTypes.any.isRequired,
-  };
+  constructor(props) {
+    super(props);
+    this.moveCard = this.moveCard.bind(this);
+    this.findCard = this.findCard.bind(this);
+
+    this.state = {cards: [], title: ""};
+
+    var cardsPromise = trelloClient.getCardsForList(this.props.id);
+    cardsPromise.then((cards) => {
+      this.setState({cards: cards});
+    })
+
+    var listPromise = trelloClient.getList(this.props.id);
+    listPromise.then((list) => {
+      this.setState({title: list.name});
+    })
+  }
 
   moveCard(id, atIndex) {
     const {card, index} = this.findCard(id);
@@ -51,24 +72,6 @@ class List extends Component {
       card,
       index: cards.indexOf(card)
     };
-  }
-
-  constructor(props) {
-    super(props);
-    this.moveCard = this.moveCard.bind(this);
-    this.findCard = this.findCard.bind(this);
-
-    this.state = {cards: [], title: ""};
-
-    var cardsPromise = trelloClient.getCardsForList(this.props.id);
-    cardsPromise.then((cards) => {
-      this.setState({cards: cards});
-    })
-
-    var listPromise = trelloClient.getList(this.props.id);
-    listPromise.then((list) => {
-      this.setState({title: list.name});
-    })
   }
 
   render() {
@@ -93,5 +96,7 @@ class List extends Component {
     );
   }
 }
+
+List.propTypes = propTypes;
 
 export default DropTarget(ItemTypes.CARD, cardTarget, collectDrop)(List);

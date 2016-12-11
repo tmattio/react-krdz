@@ -5,11 +5,11 @@ import HTML5Backend from "react-dnd-html5-backend";
 import List from "./List";
 import { trelloClient } from "../trello";
 
-class Board extends Component {
-  static propTypes = {
-    id: PropTypes.any.isRequired,
-  };
+const propTypes = {
+  id: PropTypes.any.isRequired
+};
 
+class Board extends Component {
   constructor(props) {
     super(props);
 
@@ -41,5 +41,7 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = propTypes;
 
 export default DragDropContext(HTML5Backend)(Board);
