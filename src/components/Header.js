@@ -14,7 +14,7 @@ class Header extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Form pullRight>
-            <AddCardTextInput addTask={this.props.addTask}/>
+            <AddCardTextInput addCard={this.props.addCard}/>
           </Navbar.Form>
         </Navbar>
       </div>
@@ -23,7 +23,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  addTask: PropTypes.func.isRequired
+  addCard: PropTypes.func.isRequired
 }
 
 export default Header

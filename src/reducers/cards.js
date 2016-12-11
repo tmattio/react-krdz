@@ -1,21 +1,15 @@
-import { ADD_CARD, DELETE_CARD, EDIT_CARD, COMPLETE_CARD } from '../constants/ActionTypes'
+import { ADD_CARD, DELETE_CARD, EDIT_CARD, COMPLETE_CARD, MOVE_CARD_TO_LIST } from '../constants/ActionTypes'
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    id: 0
-  }
-]
+const initialState = []
 
 export default function cards(state = initialState, action) {
   switch (action.type) {
     case ADD_CARD:
       return [
         {
-          id: state.reduce((maxId, card) => Math.max(card.id, maxId), -1) + 1,
+          id: action.id,
+          name: action.name,
           completed: false,
-          text: action.text
         },
         ...state
       ]
@@ -36,6 +30,13 @@ export default function cards(state = initialState, action) {
       return state.map(card =>
         card.id === action.id ?
           { ...card, completed: !card.completed } :
+          card
+      )
+
+    case MOVE_CARD_TO_LIST:
+      return state.map(card =>
+        card.id === action.cardId ?
+          { ...card, listId: action.listId } :
           card
       )
 

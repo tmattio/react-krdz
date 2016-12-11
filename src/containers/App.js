@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
-import { Row, Grid, Col } from "react-bootstrap"
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import List from '../components/List'
 import Header from '../components/Header'
+import KanbanBoard from '../components/KanbanBoard'
 import Footer from '../components/Footer'
 import * as CardActions from '../actions'
 
@@ -12,33 +11,23 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "designmodo-flat-ui/dist/css/flat-ui.css";
 
-const App = ({cards, actions}) => (
+const App = ({cards, lists, actions}) => (
   <div>
-    <Header addTask={actions.addCard} />
-    <Grid fluid={true}>
-      <Row className="show-grid">
-        <Col xs={6} md={4}>
-          <List cards={cards} actions={actions} />
-        </Col>
-        <Col xs={6} md={4}>
-          <List cards={cards} actions={actions} />
-        </Col>
-        <Col xs={6} md={4}>
-          <List cards={cards} actions={actions} />
-        </Col>
-      </Row>
-    </Grid>
+    <Header addCard={actions.addCard} />
+    <KanbanBoard id={'F4sP3vRt'} cards={cards} lists={lists} actions={actions} />
     <Footer cards={cards} />
   </div>
 )
 
 App.propTypes = {
   cards: PropTypes.array.isRequired,
+  lists: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  cards: state.cards
+  cards: state.cards,
+  lists: state.lists
 })
 
 const mapDispatchToProps = dispatch => ({

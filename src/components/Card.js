@@ -4,14 +4,7 @@ import { Panel } from "react-bootstrap"
 import CardTextInput from './CardTextInput'
 import './Card.css'
 
-export default class Card extends Component {
-  static propTypes = {
-    card: PropTypes.object.isRequired,
-    editCard: PropTypes.func.isRequired,
-    deleteCard: PropTypes.func.isRequired,
-    completeCard: PropTypes.func.isRequired
-  }
-
+class Card extends Component {
   state = {
     editing: false
   }
@@ -35,7 +28,7 @@ export default class Card extends Component {
     let element
     if (this.state.editing) {
       element = (
-        <CardTextInput text={card.text}
+        <CardTextInput text={card.name}
                        editing={this.state.editing}
                        onSave={(text) => this.handleSave(card.id, text)} />
       )
@@ -43,7 +36,7 @@ export default class Card extends Component {
       element = (
         <div>
           <span onDoubleClick={this.handleDoubleClick}>
-            {card.text}
+            {card.name}
           </span>
           <ButtonToolbar className="card-btn-toolbar">
             <ButtonGroup>
@@ -67,3 +60,13 @@ export default class Card extends Component {
     )
   }
 }
+
+
+Card.propTypes = {
+  card: PropTypes.object.isRequired,
+  editCard: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
+  completeCard: PropTypes.func.isRequired
+}
+
+export default Card

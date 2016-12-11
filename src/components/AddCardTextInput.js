@@ -10,7 +10,7 @@ class AddCardTextInput extends Component {
     const text = e.target.value.trim()
     if (e.which === 13) {
       if (text.length !== 0) {
-        this.props.addTask(text)
+        this.props.addCard(text)
       }
       this.setState({ text: '' })
     }
@@ -28,7 +28,6 @@ class AddCardTextInput extends Component {
             <FormControl
               type="text"
               placeholder="Add a new task"
-              autoFocus="true"
               value={this.state.text}
               onChange={this.handleChange}
               onKeyDown={this.handleSubmit} />
@@ -45,7 +44,7 @@ class AddCardTextInput extends Component {
 }
 
 AddCardTextInput.propTypes = {
-  addTask: PropTypes.func.isRequired
+  addCard: PropTypes.func.isRequired
 }
 
 export default AddCardTextInput

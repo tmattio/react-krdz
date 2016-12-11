@@ -4,11 +4,11 @@ import Card from './Card'
 
 class List extends Component {
   render() {
-    const { cards, actions } = this.props
+    const { list, cards, actions } = this.props
 
     return (
       <div>
-        <Panel header="Header">
+        <Panel header={list.name}>
           <section className="main">
             {cards.map(card =>
               <Card key={card.id} card={card} {...actions} />
@@ -21,9 +21,9 @@ class List extends Component {
 }
 
 List.propTypes = {
+  list: PropTypes.object.isRequired,
   cards: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-  addCard: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 }
 
 export default List
