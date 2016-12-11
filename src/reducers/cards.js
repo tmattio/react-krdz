@@ -6,12 +6,13 @@ export default function cards(state = initialState, action) {
   switch (action.type) {
     case ADD_CARD:
       return [
+        ...state,
         {
           id: action.id,
+          listId: action.listId,
           name: action.name,
           completed: false,
-        },
-        ...state
+        }
       ]
 
     case DELETE_CARD:

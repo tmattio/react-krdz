@@ -6,11 +6,11 @@ export default function lists(state = initialState, action) {
   switch (action.type) {
     case ADD_LIST:
       return [
+        ...state,
         {
           id: action.id,
           name: action.name
-        },
-        ...state
+        }
       ]
 
     case DELETE_LIST:

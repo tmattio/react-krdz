@@ -16,8 +16,7 @@ class KanbanBoard extends Component {
         cardsPromise.then((cards) => {
           cards.map((card, i) => {
             return (
-              this.props.actions.addCard(card.id, card.name) &&
-              this.props.actions.moveCardToList(card.id, list.id)
+              this.props.actions.addCard(card.name, card.id, list.id)
             )
           })
         })
