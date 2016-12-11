@@ -1,11 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import "./index.css";
-import "bootstrap/dist/css/bootstrap.css";
-import "designmodo-flat-ui/dist/css/flat-ui.css";
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './containers/App'
+import reducer from './reducers'
 
-ReactDOM.render(
-  <App />,
+const store = createStore(reducer)
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
-);
+)
