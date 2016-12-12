@@ -1,3 +1,12 @@
 body {
     padding-top: 70px;
 }
+
+/* This should be written in LESS so we don't have to hardcode the screen size
+   also, this should be part of the Kanban component, not the application.
+   To refactor... */
+@media (max-width: 768px) {
+  body {
+      padding-top: 130px;
+  }
+}
