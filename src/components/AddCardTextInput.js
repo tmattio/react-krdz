@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from "react"
 import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from "react-bootstrap"
+import './AddCardTextInput.css'
 
 class AddCardTextInput extends Component {
   state = {
@@ -50,7 +51,7 @@ class AddCardTextInput extends Component {
               onChange={this.handleChange}
               onKeyDown={this.handleSubmit} />
             <InputGroup.Button>
-              <Button bsStyle="background-color: #293a4a">
+              <Button>
                 <Glyphicon glyph="plus" />
               </Button>
             </InputGroup.Button>
