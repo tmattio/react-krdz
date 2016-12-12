@@ -93,7 +93,7 @@ class Card extends Component {
   }
 
   render() {
-    const { card, completeCard, deleteCard } = this.props
+    const { card, deleteCard } = this.props
     const { isDragging, connectDragSource, connectDropTarget } = this.props
     const opacity = isDragging ? 0 : 1
 
