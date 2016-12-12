@@ -6,8 +6,6 @@ export default class CardTextInput extends Component {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
     placeholder: PropTypes.string,
-    editing: PropTypes.bool,
-    newCard: PropTypes.bool
   }
 
   state = {
@@ -18,20 +16,11 @@ export default class CardTextInput extends Component {
     const text = e.target.value.trim()
     if (e.which === 13) {
       this.props.onSave(text)
-      if (this.props.newCard) {
-        this.setState({ text: '' })
-      }
     }
   }
 
   handleChange = e => {
     this.setState({ text: e.target.value })
-  }
-
-  handleBlur = e => {
-    if (!this.props.newCard) {
-      this.props.onSave(e.target.value)
-    }
   }
 
   render() {

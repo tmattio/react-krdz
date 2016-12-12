@@ -27,7 +27,7 @@ export default function cards(state = initialState, action) {
     case EDIT_CARD:
       return state.map(card =>
         card.id === action.id ?
-          { ...card, name: action.name } :
+          { ...card, name: action.name, listId: action.listId } :
           card
       )
 

@@ -83,7 +83,7 @@ class Card extends Component {
     if (text.length === 0) {
       this.props.deleteCard(id)
     } else {
-      this.props.editCard(id, text)
+      this.props.editCard(id, text, this.props.card.listId)
     }
     this.setState({ editing: false })
   }
