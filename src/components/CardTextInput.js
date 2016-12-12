@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
 
 export default class CardTextInput extends Component {
   static propTypes = {
@@ -29,11 +28,7 @@ export default class CardTextInput extends Component {
 
   render() {
     return (
-      <input className={
-        classnames({
-          edit: this.props.editing,
-          'new-card': this.props.newCard
-        })}
+      <input
         type="text"
         placeholder={this.props.placeholder}
         autoFocus="true"
