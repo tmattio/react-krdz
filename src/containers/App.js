@@ -14,7 +14,7 @@ import "designmodo-flat-ui/dist/css/flat-ui.css";
 const App = ({cards, lists, actions}) => (
   <div>
     <Header addCard={actions.addCard} />
-    <KanbanBoard id={'F4sP3vRt'} cards={cards} lists={lists} actions={actions} />
+    <KanbanBoard cards={cards} lists={lists} actions={actions} />
     <Footer cards={cards} />
   </div>
 )
