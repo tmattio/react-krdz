@@ -10,6 +10,15 @@ import { DropTarget } from "react-dnd"
  */
 const cardTarget = {
   drop() {
+  },
+
+  hover(props, monitor) {
+    const {id: draggedId} = monitor.getItem()
+    const draggedCard = props.findCard(draggedId).card
+
+    if (draggedCard.listId !== props.list.id) {
+      props.actions.changeCardList(draggedCard.id, props.list.id)
+    }
   }
 }
 

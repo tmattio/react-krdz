@@ -15,17 +15,13 @@ const cardSource = {
   beginDrag(props) {
     return {
       id: props.card.id,
-      originalIndex: props.findCard(props.card.id).index
+      originalIndex: props.findCard(props.card.id).index,
+      originalList: props.card.listId
     }
   },
 
-  endDrag(props, monitor) {
-    const {id: droppedId, originalIndex} = monitor.getItem()
-    const didDrop = monitor.didDrop()
-
-    if (!didDrop) {
-      props.moveCard(droppedId, originalIndex)
-    }
+  isDragging(props, monitor) {
+    return props.card.id === monitor.getItem().id;
   }
 }
 
@@ -133,9 +129,6 @@ class Card extends Component {
 
 Card.propTypes = {
   card: PropTypes.object.isRequired,
-  editCard: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,
-  moveCard: PropTypes.func.isRequired,
   findCard: PropTypes.func.isRequired,
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,

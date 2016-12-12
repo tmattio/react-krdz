@@ -6,7 +6,7 @@ export const addCard = (name, id = uuid(), listId = "584b1250b2aa721a50879258") 
 export const deleteCard = id => ({ type: types.DELETE_CARD, id })
 export const editCard = (id, name) => ({ type: types.EDIT_CARD, id, name })
 export const moveCard = (draggedId, targetId) => ({ type: types.MOVE_CARD, draggedId, targetId })
-export const moveCardToList = (cardId, listId) => ({ type: types.MOVE_CARD_TO_LIST, cardId, listId })
+export const changeCardList = (cardId, listId) => ({ type: types.CHANGE_CARD_LIST, cardId, listId })
 
 export const addList = (name, id = uuid()) => ({ type: types.ADD_LIST, id, name })
 export const deleteList= id => ({ type: types.DELETE_LIST, id })

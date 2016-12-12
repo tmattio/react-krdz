@@ -2,7 +2,8 @@ import {
   ADD_CARD,
   DELETE_CARD,
   EDIT_CARD,
-  MOVE_CARD } from '../constants/ActionTypes'
+  MOVE_CARD,
+  CHANGE_CARD_LIST } from '../constants/ActionTypes'
 
 const initialState = []
 
@@ -44,6 +45,13 @@ export default function cards(state = initialState, action) {
       // At targetIndex, remove 0 item and add draggedCard
       cards.splice(targetIndex, 0, draggedCard)
       return cards
+
+    case CHANGE_CARD_LIST:
+      return state.map(card =>
+        card.id === action.cardId ?
+          { ...card, listId: action.listId } :
+          card
+      )
 
     default:
       return state

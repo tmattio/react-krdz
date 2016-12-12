@@ -31,7 +31,7 @@ class KanbanBoard extends Component {
               const currentListCards = cards.filter((card) => card.listId === list.id)
               return (
                 <Col xs={6} md={4}>
-                  <List key={list.id} list={list} cards={currentListCards} actions={actions} findCard={this.findCard} />
+                  <List key={list.id} list={list} cards={currentListCards} findCard={this.findCard} actions={actions} />
                 </Col>
                 )}
             )}
