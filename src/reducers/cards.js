@@ -1,4 +1,8 @@
-import { ADD_CARD, DELETE_CARD, EDIT_CARD, COMPLETE_CARD, MOVE_CARD_TO_LIST } from '../constants/ActionTypes'
+import {
+  ADD_CARD,
+  DELETE_CARD,
+  EDIT_CARD,
+  MOVE_CARD } from '../constants/ActionTypes'
 
 const initialState = []
 
@@ -10,8 +14,7 @@ export default function cards(state = initialState, action) {
         {
           id: action.id,
           listId: action.listId,
-          name: action.name,
-          completed: false,
+          name: action.name
         }
       ]
 
@@ -23,23 +26,24 @@ export default function cards(state = initialState, action) {
     case EDIT_CARD:
       return state.map(card =>
         card.id === action.id ?
-          { ...card, text: action.text } :
+          { ...card, name: action.name } :
           card
       )
 
-    case COMPLETE_CARD:
-      return state.map(card =>
-        card.id === action.id ?
-          { ...card, completed: !card.completed } :
-          card
-      )
+    case MOVE_CARD:
+      const draggedCard = state.filter(c => c.id === action.draggedId)[0]
+      const draggedIndex = state.indexOf(draggedCard)
 
-    case MOVE_CARD_TO_LIST:
-      return state.map(card =>
-        card.id === action.cardId ?
-          { ...card, listId: action.listId } :
-          card
-      )
+      const targetCard = state.filter(c => c.id === action.targetId)[0]
+      const targetIndex = state.indexOf(targetCard)
+
+      var cards = state.map(c => c)
+
+      // At draggedId, remove 1 item
+      cards.splice(draggedIndex, 1)
+      // At targetIndex, remove 0 item and add draggedCard
+      cards.splice(targetIndex, 0, draggedCard)
+      return cards
 
     default:
       return state
