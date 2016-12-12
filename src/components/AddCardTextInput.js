@@ -3,7 +3,20 @@ import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from "react-boo
 
 class AddCardTextInput extends Component {
   state = {
-    text: this.props.text || ''
+    text: this.props.text || '',
+    focused: false
+  }
+
+  onFocus = e => {
+    this.setState({
+      focused: true
+    })
+  }
+
+  onBlur = e => {
+    this.setState({
+      focused: false
+    })
   }
 
   handleSubmit = e => {
@@ -21,10 +34,15 @@ class AddCardTextInput extends Component {
   }
 
   render() {
+    const {focused} = this.state
+
     return (
       <div>
         <FormGroup>
-          <InputGroup>
+          <InputGroup
+            className={focused && 'focus'}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur} >
             <FormControl
               type="text"
               placeholder="Add a new task"
@@ -32,7 +50,7 @@ class AddCardTextInput extends Component {
               onChange={this.handleChange}
               onKeyDown={this.handleSubmit} />
             <InputGroup.Button>
-              <Button type="submit">
+              <Button bsStyle="background-color: #293a4a">
                 <Glyphicon glyph="plus" />
               </Button>
             </InputGroup.Button>
