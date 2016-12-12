@@ -1,27 +1,27 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component, PropTypes } from "react"
 import { Row, Grid, Col } from "react-bootstrap"
-import { DragDropContext } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
-import List from "./List";
+import { DragDropContext } from "react-dnd"
+import HTML5Backend from "react-dnd-html5-backend"
+import List from "./List"
 
 class KanbanBoard extends Component {
   constructor(props) {
-    super(props);
-    this.findCard = this.findCard.bind(this);
+    super(props)
+    this.findCard = this.findCard.bind(this)
   }
 
   findCard(id) {
-    const { cards } = this.props;
-    const card = cards.filter(c => c.id === id)[0];
+    const { cards } = this.props
+    const card = cards.filter(c => c.id === id)[0]
 
     return {
       card,
       index: cards.indexOf(card)
-    };
+    }
   }
 
   render() {
-    const {lists, cards, actions} = this.props;
+    const {lists, cards, actions} = this.props
 
     return (
       <div>
@@ -38,7 +38,7 @@ class KanbanBoard extends Component {
           </Row>
         </Grid>
       </div>
-    );
+    )
   }
 }
 

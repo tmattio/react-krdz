@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from "react";
-import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from "react-bootstrap";
+import React, { Component, PropTypes } from "react"
+import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from "react-bootstrap"
 
 class AddCardTextInput extends Component {
   state = {
@@ -39,7 +39,7 @@ class AddCardTextInput extends Component {
           </InputGroup>
         </FormGroup>
       </div>
-    );
+    )
   }
 }
 

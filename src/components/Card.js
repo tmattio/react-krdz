@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, ButtonToolbar, ButtonGroup, Glyphicon } from "react-bootstrap";
+import { Button, ButtonToolbar, ButtonGroup, Glyphicon } from "react-bootstrap"
 import { Panel } from "react-bootstrap"
-import { DragSource, DropTarget } from "react-dnd";
-import ItemTypes from "../constants/ItemTypes";
+import { DragSource, DropTarget } from "react-dnd"
+import ItemTypes from "../constants/ItemTypes"
 import CardTextInput from './CardTextInput'
 import './Card.css'
-import flow from 'lodash/flow';
+import flow from 'lodash/flow'
 
 /**
  * Specifies the drag source contract.
@@ -16,18 +16,18 @@ const cardSource = {
     return {
       id: props.card.id,
       originalIndex: props.findCard(props.card.id).index
-    };
+    }
   },
 
   endDrag(props, monitor) {
-    const {id: droppedId, originalIndex} = monitor.getItem();
-    const didDrop = monitor.didDrop();
+    const {id: droppedId, originalIndex} = monitor.getItem()
+    const didDrop = monitor.didDrop()
 
     if (!didDrop) {
-      props.moveCard(droppedId, originalIndex);
+      props.moveCard(droppedId, originalIndex)
     }
   }
-};
+}
 
 /**
  * Specifies the drop target contract.
@@ -35,18 +35,18 @@ const cardSource = {
  */
 const cardTarget = {
   canDrop() {
-    return false;
+    return false
   },
 
   hover(props, monitor) {
-    const {id: draggedId} = monitor.getItem();
-    const {id: overId} = props.card;
+    const {id: draggedId} = monitor.getItem()
+    const {id: overId} = props.card
 
     if (draggedId !== overId) {
-      props.moveCard(draggedId, overId);
+      props.moveCard(draggedId, overId)
     }
   }
-};
+}
 
 /**
  * Specifies which props to inject into your component.
@@ -58,7 +58,7 @@ function collectDrag(connect, monitor) {
     connectDragSource: connect.dragSource(),
     // You can ask the monitor about the current drag state:
     isDragging: monitor.isDragging()
-  };
+  }
 }
 
 /**
@@ -71,7 +71,7 @@ function collectDrop(connect, monitor) {
     connectDropTarget: connect.dropTarget(),
     // You can ask the monitor about the current drag state:
     hovered: monitor.isOver()
-  };
+  }
 }
 
 class Card extends Component {
@@ -147,4 +147,4 @@ Card.propTypes = {
 export default flow(
   DragSource(ItemTypes.CARD, cardSource, collectDrag),
   DropTarget(ItemTypes.CARD, cardTarget, collectDrop)
-)(Card);
+)(Card)

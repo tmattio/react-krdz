@@ -7,9 +7,9 @@ import Footer from '../components/Footer'
 import * as CardActions from '../actions'
 
 // Importing Stylesheets
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
-import "designmodo-flat-ui/dist/css/flat-ui.css";
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.css"
+import "designmodo-flat-ui/dist/css/flat-ui.css"
 
 const App = ({cards, lists, actions}) => (
   <div>

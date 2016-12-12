@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component, PropTypes } from "react"
 import AddCardTextInput from './AddCardTextInput'
-import { Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap"
 
 class Header extends Component {
   render() {
@@ -18,7 +18,7 @@ class Header extends Component {
           </Navbar.Form>
         </Navbar>
       </div>
-    );
+    )
   }
 }
 

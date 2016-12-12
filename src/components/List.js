@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { Panel } from "react-bootstrap"
 import Card from './Card'
-import ItemTypes from "../constants/ItemTypes";
-import { DropTarget } from "react-dnd";
+import ItemTypes from "../constants/ItemTypes"
+import { DropTarget } from "react-dnd"
 
 /**
  * Specifies the drop target contract.
@@ -11,7 +11,7 @@ import { DropTarget } from "react-dnd";
 const cardTarget = {
   drop() {
   }
-};
+}
 
 /**
  * Specifies which props to inject into your component.
@@ -21,12 +21,12 @@ function collectDrop(connect, monitor) {
     // Call this function inside render()
     // to let React DnD handle the drag events:
     connectDropTarget: connect.dropTarget(),
-  };
+  }
 }
 
 class List extends Component {
   render() {
-    const { connectDropTarget } = this.props;
+    const { connectDropTarget } = this.props
     const { list, cards, actions, findCard } = this.props
 
     return connectDropTarget(

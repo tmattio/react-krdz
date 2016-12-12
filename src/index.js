@@ -8,9 +8,9 @@ import App from './containers/App'
 import reducer from './reducers'
 import { getAllLists, getAllCards } from './actions'
 
-const middleware = [ thunk ];
+const middleware = [ thunk ]
 if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
+  middleware.push(createLogger())
 }
 
 const store = createStore(

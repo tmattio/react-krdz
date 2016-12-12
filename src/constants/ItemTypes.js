@@ -4,4 +4,4 @@
 // the rest of your app's constants.
 export default {
   CARD: 'card'
-};
+}

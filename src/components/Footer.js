@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Grid, Col, Row } from "react-bootstrap";
+import { Grid, Col, Row } from "react-bootstrap"
 import './Footer.css'
 
 class Footer extends Component {
