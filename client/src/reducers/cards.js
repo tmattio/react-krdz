@@ -37,7 +37,8 @@ export default function cards(state = initialState, action) {
       // At draggedId, remove 1 item
       cards.splice(draggedIndex, 1)
       // At targetIndex, remove 0 item and add draggedCard
-      cards.splice(targetIndex, 0, draggedCard)return cards
+      cards.splice(targetIndex, 0, draggedCard)
+      return cards
 
     case CHANGE_CARD_LIST:
       return state.map(card => card.id === action.cardId
