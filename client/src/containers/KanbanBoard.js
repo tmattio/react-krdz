@@ -37,6 +37,7 @@ class KanbanBoard extends Component {
     const {lists, cards, actions} = this.props
     return (
       <div className="kanban-container">
+        <div className="random-background"></div>
         <Header addCard={actions.addCard} fluid={false}/>
         <Grid fluid={true}>
           <Row className="show-grid">
