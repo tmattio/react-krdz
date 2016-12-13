@@ -19,8 +19,15 @@ export const deleteCard = id => dispatch => {
 }
 
 export const receiveEditCard = (id, name, listId) => ({ type: ActionTypes.EDIT_CARD, id, name, listId })
-export const editCard = (id, name, listId) => dispatch => {
-  const data = {name: name, idList: listId}
+export const editCard = (id, name = null, listId = null) => dispatch => {
+  var data = {name: name, idList: listId}
+  if (name) {
+    data = {...data, name: name}
+  }
+  if (listId) {
+    data = {...data, idList: listId}
+  }
+  
   trello.updateCard(id, data, card => {
     dispatch(receiveEditCard(card.id, card.name, card.idList))
   })

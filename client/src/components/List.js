@@ -9,7 +9,9 @@ import { DropTarget } from "react-dnd"
  * All methods are optional.
  */
 const cardTarget = {
-  drop() {
+  drop(props, monitor) {
+    const {id} = monitor.getItem()
+    props.actions.editCard(id, null, props.list.id)
   },
 
   hover(props, monitor) {
