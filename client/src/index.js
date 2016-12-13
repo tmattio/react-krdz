@@ -6,17 +6,11 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import App from './containers/App'
 import reducer from './reducers'
+import configureStore from './store/configureStore'
 import { getAllLists, getAllCards } from './actions'
 
-const middleware = [ thunk ]
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger())
-}
-
-const store = createStore(
-  reducer,
-  applyMiddleware(...middleware)
-)
+const store = configureStore()
+const history = syncHistoryWithStore(browserHistory, store)
 
 store.dispatch(getAllLists('F4sP3vRt'))
 store.dispatch(getAllCards('F4sP3vRt'))
