@@ -13,7 +13,7 @@ import "designmodo-flat-ui/dist/css/flat-ui.css"
 
 const Kanban = ({cards, lists, actions}) => (
   <div className="kanban-container">
-    <Header addCard={actions.addCard} fluid={true} />
+    <Header addCard={actions.addCard} fluid={false} />
     <KanbanBoard cards={cards} lists={lists} actions={actions} />
     <Footer cards={cards} />
   </div>

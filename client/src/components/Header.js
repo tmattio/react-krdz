@@ -7,7 +7,7 @@ class Header extends Component {
   renderAddCard() {
     if (this.props.addCard) {
       return (
-        <Navbar.Form pullLeft>
+        <Navbar.Form pullRight>
           <AddCardTextInput addCard={this.props.addCard}/>
         </Navbar.Form>
       )
@@ -22,17 +22,19 @@ class Header extends Component {
         <Navbar inverse fixedTop fluid={this.props.fluid}>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Krdz Proto.</a>
+              <Link to="/">Krdz Proto.</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           {this.renderAddCard()}
           <Navbar.Collapse>
-            {' '}
-            <Nav pullRight>
-              <NavItem eventKey={1} href="#">
-                <Link to="/about">About</Link>
+            <Nav pullLeft>
+              <NavItem eventKey={1}>
+                <Link to="/">Board</Link>
               </NavItem>
+                <NavItem eventKey={2}>
+                  <Link to="/about">About</Link>
+                </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
