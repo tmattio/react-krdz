@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .kanban-container {
@@ -11,15 +11,17 @@ body {
 }
 
 @media (min-width: 768px) {
-  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
     margin-left: -21px;
     margin-right: 20px;
   }
 }
 
+
 /* This should be written in LESS so we don't have to hardcode the screen size
    also, this should be part of the Kanban component, not the application.
    To refactor... */
+
 @media (max-width: 768px) {
   .kanban-container {
     padding-top: 80px;

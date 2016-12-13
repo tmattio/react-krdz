@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from "react"
+import React, {Component, PropTypes} from "react"
 import AddCardTextInput from './AddCardTextInput'
-import { Link } from 'react-router'
-import { Navbar, Nav, NavItem } from "react-bootstrap"
+import {Link} from 'react-router'
+import {Navbar, Nav, NavItem} from "react-bootstrap"
 
 class Header extends Component {
   renderAddCard() {
@@ -24,7 +24,7 @@ class Header extends Component {
             <Navbar.Brand>
               <Link to="/">Krdz Proto.</Link>
             </Navbar.Brand>
-            <Navbar.Toggle />
+            <Navbar.Toggle/>
           </Navbar.Header>
           {this.renderAddCard()}
           <Navbar.Collapse>
@@ -32,9 +32,9 @@ class Header extends Component {
               <NavItem eventKey={1}>
                 <Link to="/">Board</Link>
               </NavItem>
-                <NavItem eventKey={2}>
-                  <Link to="/about">About</Link>
-                </NavItem>
+              <NavItem eventKey={2}>
+                <Link to="/about">About</Link>
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

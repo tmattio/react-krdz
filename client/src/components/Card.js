@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import { Button, ButtonToolbar, ButtonGroup, Glyphicon } from "react-bootstrap"
-import { Panel } from "react-bootstrap"
-import { DragSource, DropTarget } from "react-dnd"
+import React, {Component, PropTypes} from 'react'
+import {Button, ButtonToolbar, ButtonGroup, Glyphicon} from "react-bootstrap"
+import {Panel} from "react-bootstrap"
+import {DragSource, DropTarget} from "react-dnd"
 import ItemTypes from "../constants/ItemTypes"
 import CardTextInput from './CardTextInput'
 import './Card.css'
@@ -49,8 +49,7 @@ const cardTarget = {
  */
 function collectDrag(connect, monitor) {
   return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
+    // Call this function inside render() to let React DnD handle the drag events:
     connectDragSource: connect.dragSource(),
     // You can ask the monitor about the current drag state:
     isDragging: monitor.isDragging()
@@ -62,8 +61,7 @@ function collectDrag(connect, monitor) {
  */
 function collectDrop(connect, monitor) {
   return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
+    // Call this function inside render() to let React DnD handle the drag events:
     connectDropTarget: connect.dropTarget(),
     // You can ask the monitor about the current drag state:
     hovered: monitor.isOver()
@@ -76,7 +74,7 @@ class Card extends Component {
   }
 
   handleDoubleClick = () => {
-    this.setState({ editing: true })
+    this.setState({editing: true})
   }
 
   handleSave = (id, text) => {
@@ -85,21 +83,22 @@ class Card extends Component {
     } else {
       this.props.editCard(id, text, this.props.card.listId)
     }
-    this.setState({ editing: false })
+    this.setState({editing: false})
   }
 
   render() {
-    const { card, deleteCard } = this.props
-    const { isDragging, connectDragSource, connectDropTarget } = this.props
-    const opacity = isDragging ? 0 : 1
+    const {card, deleteCard} = this.props
+    const {isDragging, connectDragSource, connectDropTarget} = this.props
+    const opacity = isDragging
+      ? 0
+      : 1
 
     let element
     if (this.state.editing) {
-      element = (
-        <CardTextInput text={card.name}
-                       editing={this.state.editing}
-                       onSave={(text) => this.handleSave(card.id, text)} />
-      )
+      element = (<CardTextInput
+        text={card.name}
+        editing={this.state.editing}
+        onSave={(text) => this.handleSave(card.id, text)}/>)
     } else {
       element = (
         <div>
@@ -109,7 +108,7 @@ class Card extends Component {
           <ButtonToolbar className="card-btn-toolbar">
             <ButtonGroup>
               <Button bsSize="xsmall" onClick={() => deleteCard(card.id)}>
-                <Glyphicon glyph="remove" />
+                <Glyphicon glyph="remove"/>
               </Button>
             </ButtonGroup>
           </ButtonToolbar>
@@ -119,7 +118,9 @@ class Card extends Component {
 
     return connectDragSource(connectDropTarget(
       <div>
-        <Panel className="card-container" style={{opacity}}>
+        <Panel className="card-container" style={{
+          opacity
+        }}>
           {element}
         </Panel>
       </div>
@@ -137,7 +138,4 @@ Card.propTypes = {
   connectDropTarget: PropTypes.func.isRequired
 }
 
-export default flow(
-  DragSource(ItemTypes.CARD, cardSource, collectDrag),
-  DropTarget(ItemTypes.CARD, cardTarget, collectDrop)
-)(Card)
+export default flow(DragSource(ItemTypes.CARD, cardSource, collectDrag), DropTarget(ItemTypes.CARD, cardTarget, collectDrop))(Card)

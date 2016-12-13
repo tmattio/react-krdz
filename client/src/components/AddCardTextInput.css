@@ -4,14 +4,16 @@
 
 .navbar-inverse .navbar-form .input-group {
   -webkit-transition: width 0.5s ease-in-out;
-  -moz-transition:width 0.5s ease-in-out;
+  -moz-transition: width 0.5s ease-in-out;
   -o-transition: width 0.5s ease-in-out;
   transition: width 0.5s ease-in-out;
 }
 
+
 /* This should be written in LESS so we don't have to hardcode the screen size
    also, this should be part of the Kanban component, not the application.
    To refactor... */
+
 @media (max-width: 768px) {
   .navbar-inverse .navbar-form .input-group {
     width: 100%;

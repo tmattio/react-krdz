@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import { resetErrorMessage } from '../actions'
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {browserHistory} from 'react-router'
+import {resetErrorMessage} from '../actions'
 
 class App extends Component {
   static propTypes = {
@@ -23,17 +23,19 @@ class App extends Component {
   }
 
   renderErrorMessage() {
-    const { errorMessage } = this.props
+    const {errorMessage} = this.props
     if (!errorMessage) {
       return null
     }
 
     return (
-      <p style={{ backgroundColor: '#e99', padding: 10 }}>
+      <p style={{
+        backgroundColor: '#e99',
+        padding: 10
+      }}>
         <b>{errorMessage}</b>
         {' '}
-        (<a href="#"
-            onClick={this.handleDismissClick}>
+        (<a href="#" onClick={this.handleDismissClick}>
           Dismiss
         </a>)
       </p>
@@ -41,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { children, inputValue } = this.props
+    const {children, inputValue} = this.props
     return (
       <div>
         {this.renderErrorMessage()}
@@ -51,11 +53,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  errorMessage: state.errorMessage,
-  inputValue: ownProps.location.pathname.substring(1)
-})
+const mapStateToProps = (state, ownProps) => ({errorMessage: state.errorMessage, inputValue: ownProps.location.pathname.substring(1)})
 
-export default connect(mapStateToProps, {
-  resetErrorMessage
-})(App)
+export default connect(mapStateToProps, {resetErrorMessage})(App)

@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class CardTextInput extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
-    placeholder: PropTypes.string,
+    placeholder: PropTypes.string
   }
 
   state = {
@@ -19,7 +19,7 @@ export default class CardTextInput extends Component {
   }
 
   handleChange = e => {
-    this.setState({ text: e.target.value })
+    this.setState({text: e.target.value})
   }
 
   handleBlur = e => {
@@ -27,15 +27,13 @@ export default class CardTextInput extends Component {
   }
 
   render() {
-    return (
-      <input
-        type="text"
-        placeholder={this.props.placeholder}
-        autoFocus="true"
-        value={this.state.text}
-        onChange={this.handleChange}
-        onBlur={this.handleBlur}
-        onKeyDown={this.handleSubmit} />
-    )
+    return (<input
+      type="text"
+      placeholder={this.props.placeholder}
+      autoFocus="true"
+      value={this.state.text}
+      onChange={this.handleChange}
+      onBlur={this.handleBlur}
+      onKeyDown={this.handleSubmit}/>)
   }
 }
