@@ -1,8 +1,8 @@
-import * as types from '../constants/ActionTypes'
+import * as ActionTypes from '../constants/ActionTypes'
 import trello from '../api/trello'
 
 export const receiveAddCard = (name, id, listId) => ({
-  type: types.ADD_CARD, id, name, listId
+  type: ActionTypes.ADD_CARD, id, name, listId
 })
 export const addCard = (name, listId = "584b1250b2aa721a50879258") => dispatch => {
   const newCard = {name: name, idList: listId, desc: ''}
@@ -11,14 +11,14 @@ export const addCard = (name, listId = "584b1250b2aa721a50879258") => dispatch =
   })
 }
 
-export const receiveDeleteCard = id => ({ type: types.DELETE_CARD, id })
+export const receiveDeleteCard = id => ({ type: ActionTypes.DELETE_CARD, id })
 export const deleteCard = id => dispatch => {
   trello.deleteCard(id, response => {
     dispatch(receiveDeleteCard(id))
   })
 }
 
-export const receiveEditCard = (id, name, listId) => ({ type: types.EDIT_CARD, id, name, listId })
+export const receiveEditCard = (id, name, listId) => ({ type: ActionTypes.EDIT_CARD, id, name, listId })
 export const editCard = (id, name, listId) => dispatch => {
   const data = {name: name, idList: listId}
   trello.updateCard(id, data, card => {
@@ -26,13 +26,13 @@ export const editCard = (id, name, listId) => dispatch => {
   })
 }
 
-export const moveCard = (draggedId, targetId) => ({ type: types.MOVE_CARD, draggedId, targetId })
-export const changeCardList = (cardId, listId) => ({ type: types.CHANGE_CARD_LIST, cardId, listId })
+export const moveCard = (draggedId, targetId) => ({ type: ActionTypes.MOVE_CARD, draggedId, targetId })
+export const changeCardList = (cardId, listId) => ({ type: ActionTypes.CHANGE_CARD_LIST, cardId, listId })
 
-export const receiveChangeCardList = (cardId, listId) => ({ type: types.CHANGE_CARD_LIST, cardId, listId })
+export const receiveChangeCardList = (cardId, listId) => ({ type: ActionTypes.CHANGE_CARD_LIST, cardId, listId })
 
-export const receiveAddList = (name, id) => ({ type: types.ADD_LIST, id, name })
-export const receiveDeleteList= id => ({ type: types.DELETE_LIST, id })
+export const receiveAddList = (name, id) => ({ type: ActionTypes.ADD_LIST, id, name })
+export const receiveDeleteList= id => ({ type: ActionTypes.DELETE_LIST, id })
 
 export const getAllCards = boardId => dispatch => {
   trello.getBoardLists(boardId, lists => {
@@ -49,3 +49,8 @@ export const getAllLists = boardId => dispatch => {
     lists.forEach(list => dispatch(receiveAddList(list.name, list.id))
   ))
 }
+
+// Resets the currently visible error message.
+export const resetErrorMessage = () => ({
+    type: ActionTypes.RESET_ERROR_MESSAGE
+})

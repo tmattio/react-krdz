@@ -1,11 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import createLogger from 'redux-logger'
-import thunk from 'redux-thunk'
-import App from './containers/App'
-import reducer from './reducers'
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import Root from './containers/Root'
 import configureStore from './store/configureStore'
 import { getAllLists, getAllCards } from './actions'
 
@@ -16,8 +13,6 @@ store.dispatch(getAllLists('F4sP3vRt'))
 store.dispatch(getAllCards('F4sP3vRt'))
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Root store={store} history={history} />,
   document.getElementById('root')
 )

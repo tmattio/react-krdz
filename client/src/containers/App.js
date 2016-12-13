@@ -1,40 +1,61 @@
-import React, { PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
-import KanbanBoard from '../components/KanbanBoard'
-import Footer from '../components/Footer'
-import * as CardActions from '../actions'
+import { browserHistory } from 'react-router'
+import { resetErrorMessage } from '../actions'
 
-// Importing Stylesheets
-import "./App.css"
-import "bootstrap/dist/css/bootstrap.css"
-import "designmodo-flat-ui/dist/css/flat-ui.css"
+class App extends Component {
+  static propTypes = {
+    // Injected by React Redux
+    errorMessage: PropTypes.string,
+    resetErrorMessage: PropTypes.func.isRequired,
+    inputValue: PropTypes.string.isRequired,
+    // Injected by React Router
+    children: PropTypes.node
+  }
 
-const App = ({cards, lists, actions}) => (
-  <div>
-    <Header addCard={actions.addCard} />
-    <KanbanBoard cards={cards} lists={lists} actions={actions} />
-    <Footer cards={cards} />
-  </div>
-)
+  handleDismissClick = e => {
+    this.props.resetErrorMessage()
+    e.preventDefault()
+  }
 
-App.propTypes = {
-  cards: PropTypes.array.isRequired,
-  lists: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  handleChange = nextValue => {
+    browserHistory.push(`/${nextValue}`)
+  }
+
+  renderErrorMessage() {
+    const { errorMessage } = this.props
+    if (!errorMessage) {
+      return null
+    }
+
+    return (
+      <p style={{ backgroundColor: '#e99', padding: 10 }}>
+        <b>{errorMessage}</b>
+        {' '}
+        (<a href="#"
+            onClick={this.handleDismissClick}>
+          Dismiss
+        </a>)
+      </p>
+    )
+  }
+
+  render() {
+    const { children, inputValue } = this.props
+    return (
+      <div>
+        {this.renderErrorMessage()}
+        {children}
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = state => ({
-  cards: state.cards,
-  lists: state.lists
+const mapStateToProps = (state, ownProps) => ({
+  errorMessage: state.errorMessage,
+  inputValue: ownProps.location.pathname.substring(1)
 })
 
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(CardActions, dispatch)
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default connect(mapStateToProps, {
+  resetErrorMessage
+})(App)
