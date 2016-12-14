@@ -1,9 +1,8 @@
 import React from 'react';
 import { Jumbotron, Button, Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
-/* eslint func-names: ["error", "as-needed"] */
 const About = function () {
   return (
     <div>

@@ -3,7 +3,6 @@ import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import './NotFound.css';
 
-/* eslint func-names: ["error", "as-needed"] */
 const NotFound = function () {
   return (
     <div className={'NotFound'}>

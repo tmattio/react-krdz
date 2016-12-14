@@ -7,7 +7,7 @@ import {
   Panel,
 } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
-import ItemTypes from '../constants/ItemTypes';
+import ItemTypes from '../../constants/ItemTypes';
 import CardTextInput from './CardTextInput';
 import './Card.css';
 

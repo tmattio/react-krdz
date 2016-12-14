@@ -8,13 +8,13 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'designmodo-flat-ui/dist/css/flat-ui.css';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import List from '../components/List';
-import * as CardActions from '../actions';
-import './KanbanBoard.css';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import List from '../../components/List';
+import * as CardActions from '../../actions';
+import './Kanban.css';
 
-class KanbanBoard extends Component {
+class Kanban extends Component {
   constructor(props) {
     super(props);
     this.findCard = this.findCard.bind(this);
@@ -57,7 +57,7 @@ class KanbanBoard extends Component {
   }
 }
 
-KanbanBoard.propTypes = {
+Kanban.propTypes = {
   cards: PropTypes.arrayOf(React.PropTypes.shape({
     id: PropTypes.string.isRequired,
     listId: PropTypes.string.isRequired,
@@ -78,4 +78,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default DragDropContext(HTML5Backend)(
-  connect(mapStateToProps, mapDispatchToProps)(KanbanBoard));
+  connect(mapStateToProps, mapDispatchToProps)(Kanban));

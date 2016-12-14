@@ -1,6 +1,6 @@
 {
-  "name": "Header",
+  "name": "Layout",
   "version": "0.0.0",
   "private": true,
-  "main": "./Header.jsx"
+  "main": "./Layout.jsx"
 }
