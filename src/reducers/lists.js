@@ -1,6 +1,6 @@
 import { ADD_LIST, DELETE_LIST } from '../constants/ActionTypes';
 
-const initialState = []
+const initialState = [];
 
 export default function lists(state = initialState, action) {
   switch (action.type) {
@@ -8,14 +8,14 @@ export default function lists(state = initialState, action) {
       return [
         ...state, {
           id: action.id,
-          name: action.name
-        }
-      ]
+          name: action.name,
+        },
+      ];
 
     case DELETE_LIST:
-      return state.filter(list => list.id !== action.id)
+      return state.filter(list => list.id !== action.id);
 
     default:
-      return state
+      return state;
   }
 }

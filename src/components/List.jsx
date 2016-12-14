@@ -1,8 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import { Panel } from 'react-bootstrap';
+import { DropTarget } from 'react-dnd';
 import Card from './Card';
 import ItemTypes from '../constants/ItemTypes';
-import { DropTarget } from 'react-dnd';
 
 /**
  * Specifies the drop target contract.
