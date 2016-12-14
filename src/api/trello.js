@@ -15,6 +15,8 @@ class Trello {
         'Content-Type': 'application/json',
       },
     };
+
+    /* global URL url:true */
     const url = new URL(uri);
 
     if (method !== 'GET') {

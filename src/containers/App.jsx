@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { resetErrorMessage } from '../actions';
 
 const propTypes = {
@@ -35,7 +36,7 @@ class App extends Component {
       >
         <b>{errorMessage}</b>
         {' '}
-        (<a href="#" onClick={this.handleDismissClick}>Dismiss</a>)
+        (<Link onClick={this.handleDismissClick}>Dismiss</Link>)
       </p>
     );
   }

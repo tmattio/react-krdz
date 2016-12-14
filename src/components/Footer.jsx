@@ -32,7 +32,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <Grid fluid={true}>
+        <Grid fluid>
           <Row className="show-grid">
             <Col md={4} />
             <Col md={4} />
@@ -47,7 +47,11 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  cards: PropTypes.array.isRequired,
+  cards: PropTypes.arrayOf(React.PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    listId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default Footer;

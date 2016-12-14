@@ -18,14 +18,14 @@ import './Card.css';
 const cardSource = {
   beginDrag(props) {
     return {
-      id: props.card.id,
-      originalIndex: props.findCard(props.card.id).index,
-      originalList: props.card.listId,
+      id: props.id,
+      originalIndex: props.findCard(props.id).index,
+      originalList: props.listId,
     };
   },
 
   isDragging(props, monitor) {
-    return props.card.id === monitor.getItem().id;
+    return props.id === monitor.getItem().id;
   },
 };
 
@@ -40,7 +40,7 @@ const cardTarget = {
 
   hover(props, monitor) {
     const { id: draggedId } = monitor.getItem();
-    const { id: overId } = props.card;
+    const { id: overId } = props;
 
     if (draggedId !== overId) {
       props.moveCard(draggedId, overId);
@@ -87,13 +87,13 @@ class Card extends Component {
     if (text.length === 0) {
       this.props.deleteCard(id);
     } else {
-      this.props.editCard(id, text, this.props.card.listId);
+      this.props.editCard(id, text, this.props.listId);
     }
     this.setState({ editing: false });
   }
 
   render() {
-    const { card, deleteCard } = this.props;
+    const { id, name, deleteCard } = this.props;
     const { isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
 
@@ -101,20 +101,20 @@ class Card extends Component {
     if (this.state.editing) {
       element = (
         <CardTextInput
-          text={card.name}
+          text={name}
           editing={this.state.editing}
-          onSave={text => this.handleSave(card.id, text)}
+          onSave={text => this.handleSave(id, text)}
         />
       );
     } else {
       element = (
         <div>
           <span onDoubleClick={this.handleDoubleClick}>
-            {card.name}
+            {name}
           </span>
           <ButtonToolbar className="card-btn-toolbar">
             <ButtonGroup>
-              <Button bsSize="xsmall" onClick={() => deleteCard(card.id)}>
+              <Button bsSize="xsmall" onClick={() => deleteCard(id)}>
                 <Glyphicon glyph="remove" />
               </Button>
             </ButtonGroup>
@@ -139,7 +139,9 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  card: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  listId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   deleteCard: PropTypes.func.isRequired,
   editCard: PropTypes.func.isRequired,
   // Injected by React DnD:

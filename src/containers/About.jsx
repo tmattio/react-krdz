@@ -1,5 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button, Grid, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router';
 import Header from '../components/Header';
 
 /* eslint func-names: ["error", "as-needed"] */
@@ -32,9 +33,9 @@ const About = function () {
               Donec sed odio dui.
             </p>
             <p>
-              <a className="btn btn-default" href="#" role="button">
+              <Link className="btn btn-default">
                 View details &raquo;
-              </a>
+              </Link>
             </p>
           </Col>
           <Col xs={12} sm={4}>
@@ -46,9 +47,9 @@ const About = function () {
               Donec sed odio dui.
             </p>
             <p>
-              <a className="btn btn-default" href="#" role="button">
+              <Link className="btn btn-default">
                 View details &raquo;
-              </a>
+              </Link>
             </p>
           </Col>
           <Col xs={12} sm={4}>
@@ -60,9 +61,9 @@ const About = function () {
               Donec sed odio dui.
             </p>
             <p>
-              <a className="btn btn-default" href="#" role="button">
+              <Link className="btn btn-default">
                 View details &raquo;
-              </a>
+              </Link>
             </p>
           </Col>
         </Row>

@@ -14,12 +14,6 @@ import List from '../components/List';
 import * as CardActions from '../actions';
 import './KanbanBoard.css';
 
-const propTypes = {
-  cards: PropTypes.array.isRequired,
-  lists: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-};
-
 class KanbanBoard extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +24,7 @@ class KanbanBoard extends Component {
     const { cards } = this.props;
     const card = cards.filter(c => c.id === id)[0];
 
-    return { card, index: cards.indexOf(card) };
+    return { ...card, index: cards.indexOf(card) };
   }
 
   render() {
@@ -39,7 +33,7 @@ class KanbanBoard extends Component {
       <div className="kanban-container">
         <div className="random-background" />
         <Header addCard={actions.addCard} fluid={false} />
-        <Grid fluid={true}>
+        <Grid fluid>
           <Row className="show-grid">
             {lists.map((list, index) => {
               const currentListCards = cards.filter(card => card.listId === list.id);
@@ -47,10 +41,10 @@ class KanbanBoard extends Component {
                 <Col key={index} xs={12} sm={4}>
                   <List
                     key={list.id}
-                    list={list}
                     cards={currentListCards}
                     findCard={this.findCard}
                     actions={actions}
+                    {...list}
                   />
                 </Col>
               );
@@ -63,7 +57,18 @@ class KanbanBoard extends Component {
   }
 }
 
-KanbanBoard.propTypes = propTypes;
+KanbanBoard.propTypes = {
+  cards: PropTypes.arrayOf(React.PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    listId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  lists: PropTypes.arrayOf(React.PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  actions: PropTypes.arrayOf(PropTypes.func).isRequired,
+};
 
 const mapStateToProps = state => ({ cards: state.cards, lists: state.lists });
 

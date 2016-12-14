@@ -11,15 +11,15 @@ import ItemTypes from '../constants/ItemTypes';
 const cardTarget = {
   drop(props, monitor) {
     const { id } = monitor.getItem();
-    props.actions.editCard(id, null, props.list.id);
+    props.actions.editCard(id, null, props.id);
   },
 
   hover(props, monitor) {
     const { id: draggedId } = monitor.getItem();
-    const draggedCard = props.findCard(draggedId).card;
+    const draggedCard = props.findCard(draggedId);
 
-    if (draggedCard.listId !== props.list.id) {
-      props.actions.changeCardList(draggedCard.id, props.list.id);
+    if (draggedCard.listId !== props.id) {
+      props.actions.changeCardList(draggedCard.id, props.id);
     }
   },
 };
@@ -37,16 +37,18 @@ function collectDrop(connect) {
 class List extends Component {
   render() {
     const { connectDropTarget } = this.props;
-    const { list, cards, actions, findCard } = this.props;
+    const { id, name, cards, actions, findCard } = this.props;
 
     return connectDropTarget(
       <div>
-        <Panel header={list.name}>
+        <Panel header={name} id={id}>
           <section className="main">
             {cards.map(card =>
               <Card
-                key={card.id} card={card}
-                findCard={findCard} {...actions}
+                key={card.id}
+                findCard={findCard}
+                {...card}
+                {...actions}
               />)
             }
           </section>
@@ -57,9 +59,14 @@ class List extends Component {
 }
 
 List.propTypes = {
-  list: PropTypes.object.isRequired,
-  cards: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  cards: PropTypes.arrayOf(React.PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    listId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+  actions: PropTypes.arrayOf(PropTypes.func).isRequired,
   findCard: PropTypes.func.isRequired,
   // Injected by React DnD:
   connectDropTarget: PropTypes.func.isRequired,
