@@ -4,40 +4,44 @@ import {
   InputGroup,
   FormControl,
   Button,
-  Glyphicon
+  Glyphicon,
 } from 'react-bootstrap';
 import './AddCardTextInput.css';
 
 class AddCardTextInput extends Component {
-  state = {
-    text: this.props.text || '',
-    focused: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: this.props.text || '',
+      focused: false,
+    };
   }
 
-  onFocus = e => {
-    this.setState({ focused: true })
+  onFocus() {
+    this.setState({ focused: true });
   }
 
-  onBlur = e => {
-    this.setState({ focused: false })
+  onBlur() {
+    this.setState({ focused: false });
   }
 
-  handleSubmit = e => {
-    const text = e.target.value.trim()
+  handleSubmit(e) {
+    const text = e.target.value.trim();
     if (e.which === 13) {
       if (text.length !== 0) {
-        this.props.addCard(text)
+        this.props.addCard(text);
       }
-      this.setState({ text: '' })
+      this.setState({ text: '' });
     }
   }
 
-  handleChange = e => {
-    this.setState({ text: e.target.value })
+  handleChange(e) {
+    this.setState({ text: e.target.value });
   }
 
   render() {
-    const { focused } = this.state
+    const { focused } = this.state;
 
     return (
       <div>
@@ -45,13 +49,15 @@ class AddCardTextInput extends Component {
           <InputGroup
             className={focused && 'focus'}
             onFocus={this.onFocus}
-            onBlur={this.onBlur}>
+            onBlur={this.onBlur}
+          >
             <FormControl
               type="text"
               placeholder="Add a new task"
               value={this.state.text}
               onChange={this.handleChange}
-              onKeyDown={this.handleSubmit} />
+              onKeyDown={this.handleSubmit}
+            />
             <InputGroup.Button>
               <Button>
                 <Glyphicon glyph="plus" />
@@ -60,12 +66,13 @@ class AddCardTextInput extends Component {
           </InputGroup>
         </FormGroup>
       </div>
-    )
+    );
   }
 }
 
 AddCardTextInput.propTypes = {
-  addCard: PropTypes.func.isRequired
-}
+  addCard: PropTypes.func.isRequired,
+  text: PropTypes.string,
+};
 
-export default AddCardTextInput
+export default AddCardTextInput;

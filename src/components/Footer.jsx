@@ -26,7 +26,7 @@ class Footer extends Component {
         {itemWord}
         left
       </span>
-    )
+    );
   }
 
   render() {

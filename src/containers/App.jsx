@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import { resetErrorMessage } from '../actions';
 
 const propTypes = {
@@ -18,7 +17,7 @@ class App extends Component {
   }
 
   handleChange(nextValue) {
-    browserHistory.push(`/${nextValue}`);
+    this.browserHistory.push(`/${nextValue}`);
   }
 
   renderErrorMessage() {

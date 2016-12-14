@@ -4,9 +4,8 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 const configureStore = (preloadedState) => {
-  const store = createStore(rootReducer, preloadedState, compose(applyMiddleware(thunk, createLogger())
-    // Uncomment to have the devtools toolbar. DevTools.instrument()
-  ));
+  const store = createStore(
+    rootReducer, preloadedState, compose(applyMiddleware(thunk, createLogger())));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

@@ -51,7 +51,7 @@ class List extends Component {
             }
           </section>
         </Panel>
-      </div>
+      </div>,
     );
   }
 }
@@ -60,6 +60,7 @@ List.propTypes = {
   list: PropTypes.object.isRequired,
   cards: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
+  findCard: PropTypes.func.isRequired,
   // Injected by React DnD:
   connectDropTarget: PropTypes.func.isRequired,
 };

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import AddCardTextInput from './AddCardTextInput';
 
 class Header extends Component {
@@ -28,12 +29,12 @@ class Header extends Component {
           {this.renderAddCard()}
           <Navbar.Collapse>
             <Nav pullLeft>
-              <NavItem eventKey={1}>
-                <Link to="/">Board</Link>
-              </NavItem>
-              <NavItem eventKey={2}>
-                <Link to="/about">About</Link>
-              </NavItem>
+              <LinkContainer to="/">
+                <NavItem eventKey={1}>Board</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/about">
+                <NavItem eventKey={1}>About</NavItem>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
