@@ -1,4 +1,10 @@
-import {ADD_CARD, DELETE_CARD, EDIT_CARD, MOVE_CARD, CHANGE_CARD_LIST} from '../constants/ActionTypes'
+import {
+  ADD_CARD,
+  DELETE_CARD,
+  EDIT_CARD,
+  MOVE_CARD,
+  CHANGE_CARD_LIST
+} from '../constants/ActionTypes';
 
 const initialState = []
 
@@ -19,10 +25,10 @@ export default function cards(state = initialState, action) {
     case EDIT_CARD:
       return state.map(card => card.id === action.id
         ? {
-          ...card,
-          name: action.name,
-          listId: action.listId
-        }
+        ...card,
+        name: action.name,
+        listId: action.listId
+      }
         : card)
 
     case MOVE_CARD:
@@ -43,9 +49,9 @@ export default function cards(state = initialState, action) {
     case CHANGE_CARD_LIST:
       return state.map(card => card.id === action.cardId
         ? {
-          ...card,
-          listId: action.listId
-        }
+        ...card,
+        listId: action.listId
+      }
         : card)
 
     default:

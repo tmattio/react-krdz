@@ -1,58 +1,62 @@
-import React, {Component, PropTypes} from 'react'
-import {connect} from 'react-redux'
-import {browserHistory} from 'react-router'
-import {resetErrorMessage} from '../actions'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { resetErrorMessage } from '../actions';
+
+const propTypes = {
+  // Injected by React Redux
+  errorMessage: PropTypes.string,
+  resetErrorMessage: PropTypes.func.isRequired,
+  // Injected by React Router
+  children: PropTypes.node,
+};
 
 class App extends Component {
-  static propTypes = {
-    // Injected by React Redux
-    errorMessage: PropTypes.string,
-    resetErrorMessage: PropTypes.func.isRequired,
-    inputValue: PropTypes.string.isRequired,
-    // Injected by React Router
-    children: PropTypes.node
+  handleDismissClick(e) {
+    this.props.resetErrorMessage();
+    e.preventDefault();
   }
 
-  handleDismissClick = e => {
-    this.props.resetErrorMessage()
-    e.preventDefault()
-  }
-
-  handleChange = nextValue => {
-    browserHistory.push(`/${nextValue}`)
+  handleChange(nextValue) {
+    browserHistory.push(`/${nextValue}`);
   }
 
   renderErrorMessage() {
-    const {errorMessage} = this.props
+    const { errorMessage } = this.props;
     if (!errorMessage) {
-      return null
+      return null;
     }
 
     return (
-      <p style={{
-        backgroundColor: '#e99',
-        padding: 10
-      }}>
+      <p
+        style={{
+          backgroundColor: '#e99',
+          padding: 10,
+        }}
+      >
         <b>{errorMessage}</b>
         {' '}
-        (<a href="#" onClick={this.handleDismissClick}>
-          Dismiss
-        </a>)
+        (<a href="#" onClick={this.handleDismissClick}>Dismiss</a>)
       </p>
-    )
+    );
   }
 
   render() {
-    const {children, inputValue} = this.props
+    const { children } = this.props;
     return (
       <div>
         {this.renderErrorMessage()}
         {children}
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({errorMessage: state.errorMessage, inputValue: ownProps.location.pathname.substring(1)})
+App.propTypes = propTypes;
 
-export default connect(mapStateToProps, {resetErrorMessage})(App)
+const mapStateToProps = (state, ownProps) => ({
+  errorMessage: state.errorMessage,
+  inputValue: ownProps.location.pathname.substring(1),
+});
+
+export default connect(mapStateToProps, { resetErrorMessage })(App);

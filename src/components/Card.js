@@ -1,11 +1,16 @@
-import React, {Component, PropTypes} from 'react'
-import {Button, ButtonToolbar, ButtonGroup, Glyphicon} from "react-bootstrap"
-import {Panel} from "react-bootstrap"
-import {DragSource, DropTarget} from "react-dnd"
-import ItemTypes from "../constants/ItemTypes"
-import CardTextInput from './CardTextInput'
-import './Card.css'
-import flow from 'lodash/flow'
+import React, { Component, PropTypes } from 'react';
+import {
+  Button,
+  ButtonToolbar,
+  ButtonGroup,
+  Glyphicon,
+  Panel
+} from 'react-bootstrap';
+import { DragSource, DropTarget } from 'react-dnd';
+import ItemTypes from '../constants/ItemTypes';
+import CardTextInput from './CardTextInput';
+import './Card.css';
+import flow from 'lodash/flow';
 
 /**
  * Specifies the drag source contract.
@@ -35,8 +40,8 @@ const cardTarget = {
   },
 
   hover(props, monitor) {
-    const {id: draggedId} = monitor.getItem()
-    const {id: overId} = props.card
+    const { id: draggedId } = monitor.getItem()
+    const { id: overId } = props.card
 
     if (draggedId !== overId) {
       props.moveCard(draggedId, overId)
@@ -74,7 +79,7 @@ class Card extends Component {
   }
 
   handleDoubleClick = () => {
-    this.setState({editing: true})
+    this.setState({ editing: true })
   }
 
   handleSave = (id, text) => {
@@ -83,12 +88,12 @@ class Card extends Component {
     } else {
       this.props.editCard(id, text, this.props.card.listId)
     }
-    this.setState({editing: false})
+    this.setState({ editing: false })
   }
 
   render() {
-    const {card, deleteCard} = this.props
-    const {isDragging, connectDragSource, connectDropTarget} = this.props
+    const { card, deleteCard } = this.props
+    const { isDragging, connectDragSource, connectDropTarget } = this.props
     const opacity = isDragging
       ? 0
       : 1
@@ -98,7 +103,7 @@ class Card extends Component {
       element = (<CardTextInput
         text={card.name}
         editing={this.state.editing}
-        onSave={(text) => this.handleSave(card.id, text)}/>)
+        onSave={(text) => this.handleSave(card.id, text)} />)
     } else {
       element = (
         <div>
@@ -108,7 +113,7 @@ class Card extends Component {
           <ButtonToolbar className="card-btn-toolbar">
             <ButtonGroup>
               <Button bsSize="xsmall" onClick={() => deleteCard(card.id)}>
-                <Glyphicon glyph="remove"/>
+                <Glyphicon glyph="remove" />
               </Button>
             </ButtonGroup>
           </ButtonToolbar>

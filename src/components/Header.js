@@ -1,19 +1,18 @@
-import React, {Component, PropTypes} from "react"
-import AddCardTextInput from './AddCardTextInput'
-import {Link} from 'react-router'
-import {Navbar, Nav, NavItem} from "react-bootstrap"
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import AddCardTextInput from './AddCardTextInput';
 
 class Header extends Component {
   renderAddCard() {
     if (this.props.addCard) {
       return (
         <Navbar.Form pullRight>
-          <AddCardTextInput addCard={this.props.addCard}/>
+          <AddCardTextInput addCard={this.props.addCard} />
         </Navbar.Form>
-      )
-    } else {
-      return ''
+      );
     }
+    return '';
   }
 
   render() {
@@ -24,7 +23,7 @@ class Header extends Component {
             <Navbar.Brand>
               <Link to="/">Krdz Proto.</Link>
             </Navbar.Brand>
-            <Navbar.Toggle/>
+            <Navbar.Toggle />
           </Navbar.Header>
           {this.renderAddCard()}
           <Navbar.Collapse>
@@ -39,13 +38,13 @@ class Header extends Component {
           </Navbar.Collapse>
         </Navbar>
       </div>
-    )
+    );
   }
 }
 
 Header.propTypes = {
   addCard: PropTypes.func,
-  fluid: PropTypes.bool.isRequired
-}
+  fluid: PropTypes.bool.isRequired,
+};
 
-export default Header
+export default Header;

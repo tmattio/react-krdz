@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
-import classnames from 'classnames'
-import {Grid, Row, Col, Glyphicon, Button} from "react-bootstrap"
-import {Link} from 'react-router'
-
-import './NotFound.css'
+import React, { Component } from 'react';
+import classnames from 'classnames';
+import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
+import './NotFound.css';
 
 export default class NotFound extends Component {
   render() {
@@ -23,7 +22,7 @@ export default class NotFound extends Component {
               </div>
               <div className="error-actions">
                 <Link to="/">
-                  <Button bsStyle="info"><Glyphicon glyph="align-left"/>
+                  <Button bsStyle="info"><Glyphicon glyph="align-left" />
                     Take Me Home</Button>
                 </Link>
               </div>

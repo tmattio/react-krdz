@@ -1,6 +1,12 @@
-import React, {Component, PropTypes} from "react"
-import {FormGroup, InputGroup, FormControl, Button, Glyphicon} from "react-bootstrap"
-import './AddCardTextInput.css'
+import React, { Component, PropTypes } from 'react';
+import {
+  FormGroup,
+  InputGroup,
+  FormControl,
+  Button,
+  Glyphicon
+} from 'react-bootstrap';
+import './AddCardTextInput.css';
 
 class AddCardTextInput extends Component {
   state = {
@@ -9,11 +15,11 @@ class AddCardTextInput extends Component {
   }
 
   onFocus = e => {
-    this.setState({focused: true})
+    this.setState({ focused: true })
   }
 
   onBlur = e => {
-    this.setState({focused: false})
+    this.setState({ focused: false })
   }
 
   handleSubmit = e => {
@@ -22,16 +28,16 @@ class AddCardTextInput extends Component {
       if (text.length !== 0) {
         this.props.addCard(text)
       }
-      this.setState({text: ''})
+      this.setState({ text: '' })
     }
   }
 
   handleChange = e => {
-    this.setState({text: e.target.value})
+    this.setState({ text: e.target.value })
   }
 
   render() {
-    const {focused} = this.state
+    const { focused } = this.state
 
     return (
       <div>
@@ -45,10 +51,10 @@ class AddCardTextInput extends Component {
               placeholder="Add a new task"
               value={this.state.text}
               onChange={this.handleChange}
-              onKeyDown={this.handleSubmit}/>
+              onKeyDown={this.handleSubmit} />
             <InputGroup.Button>
               <Button>
-                <Glyphicon glyph="plus"/>
+                <Glyphicon glyph="plus" />
               </Button>
             </InputGroup.Button>
           </InputGroup>

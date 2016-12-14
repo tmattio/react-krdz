@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, { Component, PropTypes } from 'react';
 
 export default class CardTextInput extends Component {
   static propTypes = {
@@ -19,7 +19,7 @@ export default class CardTextInput extends Component {
   }
 
   handleChange = e => {
-    this.setState({text: e.target.value})
+    this.setState({ text: e.target.value })
   }
 
   handleBlur = e => {
@@ -34,6 +34,6 @@ export default class CardTextInput extends Component {
       value={this.state.text}
       onChange={this.handleChange}
       onBlur={this.handleBlur}
-      onKeyDown={this.handleSubmit}/>)
+      onKeyDown={this.handleSubmit} />)
   }
 }

@@ -2,5 +2,5 @@
 // type. You want to keep types in a separate file with the rest of your app's
 // constants.
 export default {
-  CARD : 'card'
-}
+  CARD: 'card',
+};

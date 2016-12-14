@@ -1,4 +1,4 @@
-import {ADD_LIST, DELETE_LIST} from '../constants/ActionTypes'
+import { ADD_LIST, DELETE_LIST } from '../constants/ActionTypes';
 
 const initialState = []
 
