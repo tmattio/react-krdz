@@ -11,6 +11,10 @@ import './AddCardTextInput.css';
 class AddCardTextInput extends Component {
   constructor(props) {
     super(props);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       text: this.props.text || '',
