@@ -8,7 +8,7 @@ import {
 } from 'react-bootstrap';
 import { DragSource, DropTarget } from 'react-dnd';
 import ItemTypes from '../constants/ItemTypes';
-import { CardTextInput } from './CardTextInput';
+import CardTextInput from './CardTextInput';
 import './Card.css';
 
 /**
@@ -73,6 +73,8 @@ function collectDrop(connect) {
 class Card extends Component {
   constructor(props) {
     super(props);
+    this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    this.handleSave = this.handleSave.bind(this);
 
     this.state = {
       editing: false,
@@ -100,11 +102,13 @@ class Card extends Component {
     let element;
     if (this.state.editing) {
       element = (
-        <CardTextInput
-          text={name}
-          editing={this.state.editing}
-          onSave={text => this.handleSave(id, text)}
-        />
+        <div>
+          <CardTextInput
+            text={name}
+            editing={this.state.editing}
+            onSave={text => this.handleSave(id, text)}
+          />
+        </div>
       );
     } else {
       element = (
@@ -125,12 +129,7 @@ class Card extends Component {
 
     return connectDragSource(connectDropTarget(
       <div>
-        <Panel
-          className="card-container"
-          style={{
-            opacity,
-          }}
-        >
+        <Panel className="card-container" style={{ opacity }}>
           {element}
         </Panel>
       </div>,

@@ -9,6 +9,9 @@ const propTypes = {
 class CardTextInput extends Component {
   constructor(props) {
     super(props);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       text: this.props.text || '',
