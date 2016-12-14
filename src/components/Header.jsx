@@ -29,10 +29,10 @@ class Header extends Component {
           {this.renderAddCard()}
           <Navbar.Collapse>
             <Nav pullLeft>
-              <LinkContainer to="/">
+              <LinkContainer to="/" onlyActiveOnIndex>
                 <NavItem eventKey={1}>Board</NavItem>
               </LinkContainer>
-              <LinkContainer to="/about">
+              <LinkContainer to="/about" onlyActiveOnIndex>
                 <NavItem eventKey={1}>About</NavItem>
               </LinkContainer>
             </Nav>

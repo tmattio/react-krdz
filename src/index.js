@@ -13,5 +13,5 @@ store.dispatch(getAllLists('F4sP3vRt'));
 store.dispatch(getAllCards('F4sP3vRt'));
 
 render(
-  <Root store={store} history={history} />, document.getElementById('root')
+  <Root store={store} history={history} />, document.getElementById('root'),
 );
