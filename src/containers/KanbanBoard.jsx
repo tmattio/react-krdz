@@ -67,7 +67,8 @@ KanbanBoard.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  actions: PropTypes.arrayOf(PropTypes.func).isRequired,
+  /* eslint react/forbid-prop-types: [2, {"forbid": [array, any]}] */
+  actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({ cards: state.cards, lists: state.lists });

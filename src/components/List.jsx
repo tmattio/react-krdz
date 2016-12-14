@@ -66,7 +66,8 @@ List.propTypes = {
     listId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  actions: PropTypes.arrayOf(PropTypes.func).isRequired,
+  /* eslint react/forbid-prop-types: [2, {"forbid": [array, any]}] */
+  actions: PropTypes.object.isRequired,
   findCard: PropTypes.func.isRequired,
   // Injected by React DnD:
   connectDropTarget: PropTypes.func.isRequired,
