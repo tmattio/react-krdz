@@ -7,7 +7,6 @@ class App extends React.PureComponent {
     // please do that inside the Layout component.
     return (
       <div>
-        <h1>Hello World!</h1>
         {React.Children.only(this.props.children)}
       </div>
     );
