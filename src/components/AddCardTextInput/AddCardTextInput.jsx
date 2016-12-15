@@ -48,7 +48,7 @@ class AddCardTextInput extends Component {
     const { focused } = this.state;
 
     return (
-      <div>
+      <div className="AddCardTextInput">
         <FormGroup>
           <InputGroup
             className={focused && 'focus'}

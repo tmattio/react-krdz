@@ -31,7 +31,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="footer">
+      <footer className="Footer">
         <Grid fluid>
           <Row className="show-grid">
             <Col md={4} />

@@ -31,7 +31,7 @@ class Kanban extends Component {
   render() {
     const { lists, cards, actions } = this.props;
     return (
-      <div className="kanban-container">
+      <div className="Kanban" >
         <div className="random-background" />
         <Navigation fluid={false}>
           <Navbar.Form pullRight>
