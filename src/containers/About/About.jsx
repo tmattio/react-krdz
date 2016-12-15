@@ -1,12 +1,13 @@
 import React from 'react';
 import { Jumbotron, Button, Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Header from '../../components/Header';
+import Navigation from '../../components/Navigation';
 
+// eslint-disable-next-line func-names
 const About = function () {
   return (
     <div>
-      <Header fluid={false} />
+      <Navigation fluid={false} />
       <Jumbotron>
         <Grid fluid={false}>
           <Row className="show-grid">

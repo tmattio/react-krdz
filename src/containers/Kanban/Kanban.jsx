@@ -1,16 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Row, Grid, Col } from 'react-bootstrap';
+import { Row, Grid, Col, Navbar } from 'react-bootstrap';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'designmodo-flat-ui/dist/css/flat-ui.css';
 
-import Header from '../../components/Header';
+import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import List from '../../components/List';
+import AddCardTextInput from '../../components/AddCardTextInput';
 import * as CardActions from '../../actions';
 import './Kanban.css';
 
@@ -32,7 +33,11 @@ class Kanban extends Component {
     return (
       <div className="kanban-container">
         <div className="random-background" />
-        <Header addCard={actions.addCard} fluid={false} />
+        <Navigation fluid={false}>
+          <Navbar.Form pullRight>
+            <AddCardTextInput addCard={actions.addCard} />
+          </Navbar.Form>
+        </Navigation>
         <Grid fluid>
           <Row className="show-grid">
             {lists.map((list, index) => {

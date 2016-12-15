@@ -3,6 +3,7 @@ import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import './NotFound.css';
 
+// eslint-disable-next-line func-names
 const NotFound = function () {
   return (
     <div className={'NotFound'}>

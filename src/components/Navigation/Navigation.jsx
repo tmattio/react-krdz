@@ -2,20 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import AddCardTextInput from '../AddCardTextInput';
 
-class Header extends Component {
-  renderAddCard() {
-    if (this.props.addCard) {
-      return (
-        <Navbar.Form pullRight>
-          <AddCardTextInput addCard={this.props.addCard} />
-        </Navbar.Form>
-      );
-    }
-    return '';
-  }
-
+class Navigation extends Component {
   render() {
     return (
       <div>
@@ -26,7 +14,7 @@ class Header extends Component {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-          {this.renderAddCard()}
+          {this.props.children}
           <Navbar.Collapse>
             <Nav pullLeft>
               <LinkContainer to="/" onlyActiveOnIndex>
@@ -43,9 +31,8 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  addCard: PropTypes.func,
+Navigation.propTypes = {
   fluid: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default Navigation;
