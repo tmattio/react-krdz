@@ -1,26 +1,23 @@
-.AddCardTextInput .navbar-inverse .navbar-form .input-group-btn .btn-default {
-    background-color: #293a4a;
+.AddCardTextInput button {
+  background-color: #293a4a!important;
 }
 
-.AddCardTextInput .navbar-inverse .navbar-form .input-group {
-    -webkit-transition: width 0.5s ease-in-out;
-    -moz-transition: width 0.5s ease-in-out;
-    -o-transition: width 0.5s ease-in-out;
-    transition: width 0.5s ease-in-out;
+.AddCardTextInput .input-group {
+  transition: width 0.5s ease-in-out;
 }
 
 @media (max-width: 768px) {
-    .AddCardTextInput .navbar-inverse .navbar-form .input-group {
-        width: 100%;
-    }
+  .AddCardTextInput .input-group {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
-    .AddCardTextInput .navbar-inverse .navbar-form .input-group {
-        width: 300px;
-    }
+  .AddCardTextInput .input-group {
+    width: 300px;
+  }
 
-    .AddCardTextInput .navbar-inverse .navbar-form .focus {
-        width: 500px;
-    }
+  .AddCardTextInput .form-group .focus {
+    width: 500px;
+  }
 }

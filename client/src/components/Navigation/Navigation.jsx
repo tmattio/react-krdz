@@ -7,7 +7,7 @@ import './Navigation.css'
 class Navigation extends Component {
   render() {
     return (
-      <div>
+      <div className="Navigation">
         <Navbar inverse fixedTop fluid={this.props.fluid}>
           <Navbar.Header>
             <Navbar.Brand>
