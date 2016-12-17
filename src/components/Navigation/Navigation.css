@@ -9,7 +9,7 @@ body {
  * We want to change the default FUI color because we display the active
  * color for the menu item (green)
  */
-.navbar a {
+.Navigation .navbar a {
   color: white;
 }
 
@@ -17,11 +17,11 @@ body {
  * Let's not change the behavior for small screen, it looks great
  */
 @media (min-width: 768px) {
-  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  .Navigation .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
     margin-left: -21px;
     margin-right: 20px;
   }
-  .navbar-collapse .navbar-nav.navbar-left:first-child > li:first-child a {
+  .Navigation .navbar-collapse .navbar-nav.navbar-left:first-child > li:first-child a {
      border-bottom-left-radius: 0px;
      border-top-left-radius: 0px;
   }

@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "classnames": "^2.2.5",
     "designmodo-flat-ui": "github:designmodo/Flat-UI",
     "express": "4.13.3",
     "isomorphic-fetch": "^2.2.1",
