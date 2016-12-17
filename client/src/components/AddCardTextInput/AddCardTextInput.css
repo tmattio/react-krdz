@@ -1,0 +1,23 @@
+.AddCardTextInput button {
+  background-color: #293a4a!important;
+}
+
+.AddCardTextInput .input-group {
+  transition: width 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .AddCardTextInput .input-group {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .AddCardTextInput .input-group {
+    width: 300px;
+  }
+
+  .AddCardTextInput .form-group .focus {
+    width: 500px;
+  }
+}

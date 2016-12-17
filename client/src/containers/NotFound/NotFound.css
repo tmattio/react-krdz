@@ -1,0 +1,8 @@
+.NotFound {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.NotFound button {
+    margin-top: 20px;
+}

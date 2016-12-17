@@ -1,0 +1,37 @@
+{
+  "name": "react-krdz",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
+    "designmodo-flat-ui": "github:designmodo/Flat-UI",
+    "express": "4.13.3",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^15.4.1",
+    "react-bootstrap": "^0.30.7",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
+    "react-dom": "^15.4.1",
+    "react-redux": "^4.4.6",
+    "react-router": "^3.0.0",
+    "react-router-bootstrap": "^0.23.1",
+    "react-router-redux": "^4.0.7",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "react-scripts": "0.8.4",
+    "redux-logger": "^2.7.4"
+  },
+  "eslintConfig": {
+    "extends": "airbnb"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
